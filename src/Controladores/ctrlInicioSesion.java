@@ -23,13 +23,8 @@ public class ctrlInicioSesion implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == Vistas.btnIngresar) {
             Modelos.setCorreo(Vistas.txtCorreo.getText());
-            Modelos.setContraseña(Modelos.convertirSHA256(Vistas.txtContraseña.getText()));
-
-            //Creo una variable llamada "comprobar" 
-            //que guardará el resultado de ejecutar el metodo iniciarSesion()            
+            Modelos.setContraseña(Modelos.convertirSHA256(Vistas.txtContraseña.getText()));          
             boolean comprobar = Modelos.iniciarSesion();
-
-            //Si la variable es "true" significa que si existe el usuario ingresado    
             if (comprobar == true) {
                 JOptionPane.showMessageDialog(Vistas,"¡Bienvenido a DLPH!");
             } else {

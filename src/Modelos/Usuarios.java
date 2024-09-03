@@ -54,21 +54,16 @@ public class Usuarios {
         this.Contraseña = Contraseña;
     }
      public boolean iniciarSesion() {
-        //Obtenemos la conexión a la base de datos
         Connection conexion = ClaseConexion.getConexion();
         boolean resultado = false;
 
         try {
-            //Preparamos la consulta SQL para verificar el usuario
-            String sql = "SELECT * FROM tbUsuario WHERE Correo = ? AND Contraseña = ?";
+            String sql = "SELECT * FROM Usuarios WHERE correoUsuario = ? AND contraseñaUsuario = ?";
             PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, getCorreo());
             statement.setString(2, getContraseña());
 
-            //Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();
-
-            //Si hay un resultado, significa que el usuario existe y la contraseña es correcta
             if (resultSet.next()) {
                 resultado = true;
             }
